@@ -106,7 +106,7 @@
 
 '''박씨네 집 만들기'''
 class HousePark:
-    def __init__(self, name, national):
+    def __init__(self, name, national): #_초기화
         self.name = name
         self.national = national
     def lastname(self):
@@ -122,25 +122,32 @@ class HousePark:
         print("%s, %s 결혼했네" % (self.name, other.name))
 
 
-pey = HousePark("박길동", "한국")
-print(pey.name)
-print(pey.lastname())
-pey.travle('서울')
+park = HousePark("박길동", "한국")
+print(park.name)
+print(park.lastname())
+park.travle('서울')
 
-juliet = HousePark("조지 부시", "미국")
-print(juliet.name)
-print(juliet.lastname())
-juliet.travle('타이페이')
+joji = HousePark("조지 부시", "미국")
+print(joji.name)
+print(joji.lastname())
+joji.travle('타이페이')
 
-class HouseKim(HousePark):
+class HouseKim(HousePark): #_HousePark 상속
     def travle(self, where, day):
         self.name = "김" + self.name[1:]
-        print("%s, %s(으)로 %d일 여행을 감" % (self.name, where, day))
+        print("%s, %s(으)로 %d일 여행 갔네" % (self.name, where, day))
+    def inLove(self, other):
+        print("%s, %s를 사랑했네" % (self.name, other.name))
+    def __sub__(self, other):
+        print("%s, %s, 이혼했네" % (self.name, other.name))
 
-pey = HouseKim("박길동", "한국")
-print(pey.name)
-print(pey.lastname())
-pey.travle('서울', 10)
+kim = HouseKim("박길동", "한국")
+print(kim.name)
+print(kim.lastname())
 
-pey + juliet
+kim.travle('서울', 10)
+kim + joji
+kim.inLove(joji)
+kim - joji
+
 
